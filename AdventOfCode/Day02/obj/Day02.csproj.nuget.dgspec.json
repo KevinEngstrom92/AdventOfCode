@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\AdventOfCode\\AdventOfCode\\AdventOfCode\\AdventOfCode.csproj": {}
+    "E:\\AdventOfCode\\AdventOfCode\\Day02\\Day02.csproj": {}
   },
   "projects": {
-    "E:\\AdventOfCode\\AdventOfCode\\AdventOfCode\\AdventOfCode.csproj": {
+    "E:\\AdventOfCode\\AdventOfCode\\Day02\\Day02.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\AdventOfCode\\AdventOfCode\\AdventOfCode\\AdventOfCode.csproj",
-        "projectName": "AdventOfCode",
-        "projectPath": "E:\\AdventOfCode\\AdventOfCode\\AdventOfCode\\AdventOfCode.csproj",
+        "projectUniqueName": "E:\\AdventOfCode\\AdventOfCode\\Day02\\Day02.csproj",
+        "projectName": "Day02",
+        "projectPath": "E:\\AdventOfCode\\AdventOfCode\\Day02\\Day02.csproj",
         "packagesPath": "C:\\Users\\Polski\\.nuget\\packages\\",
-        "outputPath": "E:\\AdventOfCode\\AdventOfCode\\AdventOfCode\\obj\\",
+        "outputPath": "E:\\AdventOfCode\\AdventOfCode\\Day02\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
