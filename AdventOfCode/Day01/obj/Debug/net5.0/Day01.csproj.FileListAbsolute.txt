@@ -13,3 +13,4 @@ E:\AdventOfCode\AdventOfCode\Day01\obj\Debug\net5.0\Day01.dll
 E:\AdventOfCode\AdventOfCode\Day01\obj\Debug\net5.0\ref\Day01.dll
 E:\AdventOfCode\AdventOfCode\Day01\obj\Debug\net5.0\Day01.pdb
 E:\AdventOfCode\AdventOfCode\Day01\obj\Debug\net5.0\Day01.genruntimeconfig.cache
+E:\AdventOfCode\AdventOfCode\Day01\obj\Debug\net5.0\Day01.csproj.AssemblyReference.cache
