@@ -8,25 +8,20 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Polski\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\kengstro\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\AdventOfCode\\AdventOfCode\\Day01\\Day01.csproj",
+      "projectUniqueName": "C:\\Users\\kengstro\\source\\repos\\AdventOfCode2021\\AdventOfCode\\Day01\\Day01.csproj",
       "projectName": "Day01",
-      "projectPath": "E:\\AdventOfCode\\AdventOfCode\\Day01\\Day01.csproj",
-      "packagesPath": "C:\\Users\\Polski\\.nuget\\packages\\",
-      "outputPath": "E:\\AdventOfCode\\AdventOfCode\\Day01\\obj\\",
+      "projectPath": "C:\\Users\\kengstro\\source\\repos\\AdventOfCode2021\\AdventOfCode\\Day01\\Day01.csproj",
+      "packagesPath": "C:\\Users\\kengstro\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kengstro\\source\\repos\\AdventOfCode2021\\AdventOfCode\\Day01\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Polski\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\kengstro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -65,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
