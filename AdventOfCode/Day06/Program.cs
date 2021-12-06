@@ -8,63 +8,53 @@ namespace Day06
     {
         static void Main(string[] args)
         {
-            var puzzleInput = @"3,4,3,1,2";
+            var puzzleInput = @"5,1,1,4,1,1,4,1,1,1,1,1,1,1,1,1,1,1,4,2,1,1,1,3,5,1,1,1,5,4,1,1,1,2,2,1,1,1,2,1,1,1,2,5,2,1,2,2,3,1,1,1,1,1,1,1,1,5,1,1,4,1,1,1,5,4,1,1,3,3,2,1,1,1,5,1,1,4,1,1,5,1,1,5,1,2,3,1,5,1,3,2,1,3,1,1,4,1,1,1,1,2,1,2,1,1,2,1,1,1,4,4,1,5,1,1,3,5,1,1,5,1,4,1,1,1,1,1,1,1,1,1,2,2,3,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,1,5,1,1,1,1,4,1,1,1,1,4,1,1,1,1,3,1,2,1,2,1,3,1,3,4,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,4,1,1,2,2,1,2,4,1,1,3,1,1,1,5,1,3,1,1,1,5,5,1,1,1,1,2,3,4,1,1,1,1,1,1,1,1,1,1,1,1,5,1,4,3,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,3,3,1,2,2,1,4,1,5,1,5,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,4,3,1,1,4";
 
-            var puzzleSplit = puzzleInput.Split(",").Select(x=> Int32.Parse(x)).ToList(); ;
-            List<int> lanternFishes = new List<int>();
-            List<int> newLanternFishesForNextDay = new List<int>();
-            List<int> prevFishes = new List<int>();
+            var puzzleSplit = puzzleInput.Split(",").Select(x=> Int32.Parse(x)).ToList();
 
-            foreach (var item in puzzleSplit)
+            long[] fishes = new long[9];
+            long[] tempFishes = new long[9];
+
+            int days = 256;
+
+            for(int i = 0; i < puzzleSplit.Count; i++)
             {
-                lanternFishes.Add(item);
-                prevFishes.Add(item);
-
+                fishes[puzzleSplit[i]] += 1;
             }
-            
 
-            int days = 255;
-            Console.WriteLine($"Initial State: \t" + String.Join(", ", lanternFishes));
-            for (int day = 0; day <= days; day++)
+            for(int i = 0; i < days; i++)
             {
-               
-                for (int i = 0; i < lanternFishes.Count; i++)
+                long nextGen = 0;
                 {
-                   
-                  if(lanternFishes[i] == prevFishes[i])
+                    if(fishes[0] > 0)
                     {
-                        lanternFishes[i] -= 1;
-                        continue;
+                        nextGen = fishes[0];
                     }
 
-                  if((lanternFishes[i] == 0 && prevFishes[i] == 1))
+                    for(int j = 0; j < fishes.Length-1; j++)
                     {
-                        newLanternFishesForNextDay.Add(8);
-                        lanternFishes[i] = 6;
-                        prevFishes[i] = 7;
-                        continue;
+                        tempFishes[j] = fishes[j+1];
                     }
 
+                    tempFishes[6] += nextGen;
+                    tempFishes[8] += nextGen;
 
-                  if(lanternFishes[i] == 0)
+                    tempFishes.CopyTo(fishes, 0);
+
+                    for(int j = 0; j < tempFishes.Length; j++)
                     {
-                        lanternFishes[i] = 6;
-                        continue;
+                        tempFishes[j] = 0;
                     }
-
-                    lanternFishes[i] -= 1;
-                    prevFishes[i] -= 1;
                 }
-
-               
-                lanternFishes.AddRange(newLanternFishesForNextDay);
-                prevFishes.AddRange(newLanternFishesForNextDay);
-                newLanternFishesForNextDay.Clear();
-                //Console.WriteLine($"After day {day+1}\t" + String.Join(", ", lanternFishes));
-
             }
 
-            Console.WriteLine($"After {days + 1} there are " + lanternFishes.Count + " fishes");
+            long sum = 0;
+            for(int i = 0; i < fishes.Length; i++)
+            {
+                sum += fishes[i];
+            }
+
+            Console.WriteLine($"After day {days} there are '{sum}' fishes");
         }
     }
 }
