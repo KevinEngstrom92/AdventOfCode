@@ -1,4 +1,4 @@
-﻿#define GOLD
+﻿#define SILVER
 using System;
 using System.Linq;
 
