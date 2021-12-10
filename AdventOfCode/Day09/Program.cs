@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Day09
 {
@@ -111,6 +112,7 @@ namespace Day09
             var inputSplit = puzzleInput.Split("\r\n");
             List<int?> toCheck = new List<int?>();
             int low = 0;
+            List<(int x, int y)> lowPoints = new List<(int, int)>();
             for (int i = 0; i < inputSplit.Length; i++)
             {
                 Console.WriteLine();
@@ -225,6 +227,7 @@ namespace Day09
                             Console.ForegroundColor = ConsoleColor.Blue;
                             Console.Write($"{inputSplit[i][ch]}");
                             Console.ForegroundColor = ConsoleColor.White;
+                            lowPoints.Add(new (i, ch));
                         }
                     }
 
@@ -232,12 +235,144 @@ namespace Day09
 
                 }
             }
-
+            var basins = new int[lowPoints.Count + 1];
+            var seen = new HashSet<(int x, int y)>();
+            var basinNumber = 0;
             //GOLD
+            var size = new List<long>();
+            foreach (var item in lowPoints)
+            {
+                var s = 0;
+                
+                
+                var walk = new Stack<(int x, int y)>();
+                seen.Add(item);
+                basinNumber++;
+                walk.Push((item.x, item.y));
+                var isFirst = true;
+                while(walk.Count > 0)
+                {
+                    var curr = walk.Pop();
+                    curr.x = Math.Abs(curr.x);
+                    curr.y = Math.Abs(curr.y);
+                    if (Convert.ToInt32(inputSplit[curr.x][curr.y] - '0') == 9)
+                        continue;
+                    if(!isFirst)
+                    if (seen.Contains(curr))
+                        continue;
+                    seen.Add(curr);
+                    basins[basinNumber] += 1;
+                    Console.WriteLine(inputSplit[curr.x][curr.y]);
+                    isFirst = false;
 
+                    var left = (curr.x, curr.y - 1);
+                    var right = (curr.x, curr.y + 1);
+                    var up = (curr.x - 1, curr.y);
+                    var down = (curr.x + 1, curr.y);
+
+                    //var leftDiagTop = (item.x - 1, item.y - 1);
+                    //var leftDiagBottom = (item.x - 1, item.y + 1);
+                    //var rightDiagTop = (item.x + 1, item.y - 1);
+                    //var rightDiagBottom = (item.x + 1, item.y + 1);
+                    
+                    if (curr.x == 0)
+                    {
+                        if (curr.y == 0)
+                        {
+                            walk.Push(down);
+                            walk.Push(right);
+                           // walk.Push(rightDiagBottom);
+                        }
+
+                        else if (curr.y == inputSplit[0].Length - 1)
+                        {
+                            walk.Push(down);
+                            walk.Push(left);
+                            //walk.Push(leftDiagBottom);
+                        }
+                        else
+                        {
+                            walk.Push(down);
+                            walk.Push(left);
+                            walk.Push(right);
+                            //walk.Push(leftDiagBottom);
+                           // walk.Push(rightDiagBottom);
+                        }
+                    }
+
+                    else if (curr.x == inputSplit.Length - 1)
+                    {
+                        if (curr.y == 0)
+                        {
+                            walk.Push(up);
+                            walk.Push(right);
+                            //walk.Push(rightDiagTop);
+                        }
+
+                        else if (curr.y == inputSplit[0].Length - 1)
+                        {
+                            walk.Push(up);
+                            walk.Push(left);
+                            //walk.Push(leftDiagTop);
+                        }
+                        else
+                        {
+                            walk.Push(up);
+                            walk.Push(left);
+                            walk.Push(right);
+                           // walk.Push(leftDiagTop);
+                           // walk.Push(rightDiagTop);
+                        }
+                    }
+                    else
+                    {
+                        if (curr.y == 0)
+                        {
+                            walk.Push(up);
+                            walk.Push(down);
+                            walk.Push(right);
+                            //walk.Push(rightDiagTop);
+                            //walk.Push(rightDiagBottom);
+                        }
+                        else if (curr.y == inputSplit[0].Length - 1)
+                        {
+                            walk.Push(up);
+                            walk.Push(down);
+                            walk.Push(left);
+                            //walk.Push(leftDiagTop);
+                            //walk.Push(leftDiagBottom);
+                        }
+                        else
+                        {
+                            walk.Push(up);
+                            walk.Push(down);
+                            walk.Push(left);
+                            walk.Push(right);
+                            //walk.Push(rightDiagTop);
+                            //walk.Push(rightDiagBottom);
+                            //walk.Push(leftDiagTop);
+                            //walk.Push(leftDiagBottom);
+                        }
+
+
+                    }
+                }
+
+                //foreach lowpoint
+                //visit all adjacent 
+
+                
+            }
 
             //GOLD END
             Console.WriteLine("\n\nSUM:\t" + low);
+
+            var winners = basins.OrderByDescending(x => x).Take(3);
+            int sum = 1;
+            winners.ToList().ForEach(x => sum *= x );
+            Console.WriteLine("\n\nSUM GOLD:\t"+sum);
+
+
         }
 
     }
